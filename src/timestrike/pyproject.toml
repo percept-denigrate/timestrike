@@ -1,0 +1,8 @@
+[project]
+name = 'timestrike'
+version = '0.0.1'
+description = 'Timing attacks'
+readme = 'README.md'
+license = {file = 'LICENSE'}
+requires-python = '>=3.10'
+
