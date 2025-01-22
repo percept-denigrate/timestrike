@@ -9,7 +9,9 @@ def get_length(measure_time, chars=printable, sample=1, selector=min, max_len=64
             times[l].append(measure_time(message))
     return max(range(max_len), key=lambda l: selector(times[l]))
 
-def get_key(measure_time, length, chars=printable, sample=1, selector=min, initial_key="", debug=False):
+def get_key(measure_time, length=None, chars=printable, sample=1, selector=min, initial_key="", debug=False):
+    if length is None:
+        length = get_length(measure_time, chars=chars, sample=sample, selector=selector, max_len=64)
     for _ in range(length - len(initial_key)):
         times = {c:[] for c in chars}
         for _ in range(sample):

@@ -25,6 +25,5 @@ def measure_time(message):
     response_time = end_time - start_time
     return response_time
 
-l = get_length(measure_time, sample=3)
-k = get_key(measure_time, l, sample=3)
+k = get_key(measure_time, sample=5)
 assert k == password
