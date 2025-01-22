@@ -4,14 +4,14 @@ Python library for timing attacks
 
 ## Usage
 
-The library provides two functions: `length` to obtain the length of the key, and `key` to obtain its content.
+The library provides two functions: `get_length` to obtain the length of the key, and `get_key` to obtain its content. They only require the user to define the function that gives the processing time of a given string.
 
 ## Examples
 
 ```
 import socket
 import time
-from timestrike import *
+from timestrike import get_length, get_key
 
 def measure_time(message):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -24,7 +24,7 @@ def measure_time(message):
         s.close()
         return response_time
 
-l = length(measure_time, chars=chars, sample=3)
-k = key(measure_time, l, sample=3)
+l = get_length(measure_time, chars=chars, sample=3)
+k = get_key(measure_time, l, sample=3)
 print(k)
 ```

@@ -1,7 +1,7 @@
 import time
 from string import printable
 
-def length(measure_time, chars=printable, sample=1, selector=min, max_len=64):
+def get_length(measure_time, chars=printable, sample=1, selector=min, max_len=64):
     times = [[] for _ in range(max_len)]
     for _ in range(sample):
         for l in range(max_len):
@@ -9,7 +9,7 @@ def length(measure_time, chars=printable, sample=1, selector=min, max_len=64):
             times[l].append(measure_time(message))
     return max(range(max_len), key=lambda l: selector(times[l]))
 
-def key(measure_time, length, chars=printable, sample=1, selector=min, initial_key="", debug=False):
+def get_key(measure_time, length, chars=printable, sample=1, selector=min, initial_key="", debug=False):
     for _ in range(length - len(initial_key)):
         times = {c:[] for c in chars}
         for _ in range(sample):
