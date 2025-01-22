@@ -11,7 +11,7 @@ The library provides two functions: `get_length` to obtain the length of the key
 ```
 import socket
 import time
-from timestrike import get_length, get_key
+from timestrike import get_length
 
 def measure_time(message):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
