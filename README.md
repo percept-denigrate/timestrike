@@ -24,7 +24,7 @@ def measure_time(message):
         s.close()
         return response_time
 
-l = get_length(measure_time, chars=chars, sample=3)
+l = get_length(measure_time, sample=3)
 k = get_key(measure_time, l, sample=3)
 print(k)
 ```
