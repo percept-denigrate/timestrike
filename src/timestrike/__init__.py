@@ -1,1 +1,1 @@
-from .timing import length, key
+from .timing import get_length, get_key
