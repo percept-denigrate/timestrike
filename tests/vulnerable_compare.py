@@ -12,10 +12,10 @@ def vulnerable_compare(message, password):
     if len(message) != len(password):
         return False
     for i in range(len(password)):
-        time.sleep(1e-15)
+        time.sleep(1e-6)
         if message[i] != password[i]:
             return False
-        time.sleep(1e-15)
+        time.sleep(1e-6)
     return True
 
 def measure_time(message):
