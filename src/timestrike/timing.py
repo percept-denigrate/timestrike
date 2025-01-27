@@ -1,14 +1,14 @@
 import time
-from string import printable
+from string import punctuation, ascii_letters, digits
 
-def get_length(measure_time, chars=printable, sample=1, selector=min, max_len=64):
+def get_length(measure_time, chars=punctuation + ascii_letters + digits, sample=1, selector=min, max_len=64):
     '''
     Performs a timing attack to get the length of the key, by testing messages of lengths from 0 to max_length-1.
 
     Parameters
     ----------
     measure_time: the user-defined function that takes a message and returns the time it takes to test if it is the correct key
-    chars: the character set of the key (default is string.printable)
+    chars: the character set of the key (default is punctuation, letters and digits)
     sample: the number of times each possibility is tested (default is 1)
     selector: the function giving a single time for a possibility based on all its measured times (default is min)
     max_length: the maximum length of the key to be tested (default is 64)
@@ -20,7 +20,7 @@ def get_length(measure_time, chars=printable, sample=1, selector=min, max_len=64
             times[l].append(measure_time(message))
     return max(range(max_len), key=lambda l: selector(times[l]))
 
-def get_key(measure_time, length=None, chars=printable, sample=1, selector=min, initial_key="", print_keys=False):
+def get_key(measure_time, length=None, chars=punctuation + ascii_letters + digits, sample=1, selector=min, initial_key="", print_keys=False):
     '''
     Performs a timing attack to get the content of the key, by iteratively testing each character.
 
@@ -28,7 +28,7 @@ def get_key(measure_time, length=None, chars=printable, sample=1, selector=min, 
     ----------
     measure_time: the user-defined function that takes a message and returns the time it takes to test if it is the correct key
     length: the length of the key if you already know it (default is automatically calculated with get_length)
-    chars: the character set of the key (default is string.printable)
+    chars: the character set of the key (default is punctuation, letters and digits)
     sample: the number of times each possibility is tested (default is 1)
     selector: the function giving a single time for a possibility based on all its measured times (defailt is min)
     initial_key: the first characters of the key if you already know it (default it '')
