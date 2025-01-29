@@ -8,7 +8,7 @@ The library provides two functions: `get_length` to obtain the length of the key
 
 ## Examples
 
-If the target is a server accepting TCP connection:
+If the target is a server accepting TCP connections:
 ```
 import socket
 import time
@@ -42,14 +42,13 @@ def measure_time(pin):
         elf_file,
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
         text=True
     )
 
     start = time.time()
-    stdout, stderr = process.communicate(input=f"{pin}\n")
+    process.communicate(input=f"{pin}\n")
     end = time.time()
     return end - start
 
-print(get_key(measure_time, sample=1, chars="1234567890"))
+print(get_key(measure_time, chars="1234567890"))
 ```
