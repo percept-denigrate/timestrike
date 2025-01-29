@@ -1,6 +1,6 @@
 [project]
 name = 'timestrike'
-version = '0.1.9'
+version = '0.1.10'
 description = 'Timing attacks'
 readme = 'README.md'
 license = {file = 'LICENSE'}

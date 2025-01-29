@@ -8,6 +8,7 @@ The library provides two functions: `get_length` to obtain the length of the key
 
 ## Examples
 
+If the target is a server accepting TCP connection:
 ```
 import socket
 import time
@@ -26,4 +27,29 @@ def measure_time(message):
 
 k = get_key(measure_time, sample=3)
 print(k)
+```
+
+If the target is a binary that checks a pin number (taken from [picoCTF](https://play.picoctf.org/practice/challenge/298)):
+```
+import subprocess
+import time
+from timestrike import get_key
+
+elf_file = './pin_checker'
+
+def measure_time(pin):
+    process = subprocess.Popen(
+        elf_file,
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True
+    )
+
+    start = time.time()
+    stdout, stderr = process.communicate(input=f"{pin}\n")
+    end = time.time()
+    return end - start
+
+print(get_key(measure_time, sample=1, chars="1234567890"))
 ```
