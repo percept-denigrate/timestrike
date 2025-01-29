@@ -9,7 +9,7 @@ The library provides two functions: `get_length` to obtain the length of the key
 ## Examples
 
 If the target is a server accepting TCP connections:
-```
+```python
 import socket
 import time
 from timestrike import get_key
@@ -30,7 +30,7 @@ print(k)
 ```
 
 If the target is a binary that checks a pin number (taken from [picoCTF](https://play.picoctf.org/practice/challenge/298)):
-```
+```python
 import subprocess
 import time
 from timestrike import get_key
